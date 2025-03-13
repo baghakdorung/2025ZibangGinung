@@ -6,20 +6,18 @@ public class LowBlock : MonoBehaviour
 {
     public bool touch;
 
-    private void OnCollderEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && touch)
+        if (other.CompareTag("Player") && !touch)
         {
             touch = true;
-            other.transform.position += new Vector3(0, 0.2f, 0);
+            other.transform.position += new Vector3(0, 0.1f, 0);
         }
     }
 
-    private void OnCollderExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
             touch = false;
     }
-
-    private void Onco
 }

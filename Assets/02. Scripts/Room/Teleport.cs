@@ -29,7 +29,7 @@ public class Teleport : MonoBehaviour
             Vector3 direction = transform.forward;
 
             // 플레이어 이동
-            Vector3 playerTeleportPosition = transform.position + direction * 13;
+            Vector3 playerTeleportPosition = other.transform.position + direction * 13;
             other.transform.position = playerTeleportPosition;
 
             // 카메라 이동

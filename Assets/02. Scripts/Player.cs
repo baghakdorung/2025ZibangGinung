@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    // 체력
+    public float hp = 100f;
+    private bool god = false;
+
     // 이동
     public float moveSpeed = 5f;
     private Rigidbody rb;
@@ -24,6 +28,13 @@ public class PlayerMovement : MonoBehaviour
         // 입력
         playerX = Input.GetAxisRaw("Horizontal");
         playerZ = Input.GetAxisRaw("Vertical");
+
+        if (playerX != 0 || playerZ != 0)
+        {
+            GetComponentInChildren<Animator>().SetBool("isWalk", true);
+        }
+        else
+            GetComponentInChildren<Animator>().SetBool("isWalk", false);
     }
 
     void FixedUpdate()
@@ -42,5 +53,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveVelocity = inputDirection * moveSpeed;
         moveVelocity.y = rb.velocity.y;
         rb.velocity = moveVelocity;
+    }
+
+    public void Damaged(float damage)
+    {
+        hp -= damage;
+        god = true;
     }
 }

@@ -8,13 +8,13 @@ public class PedalData : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Object")
+        if(other.CompareTag("Object"))
             press = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Object")
+        if (other.CompareTag("Object"))
             press = false;
     }
 }
