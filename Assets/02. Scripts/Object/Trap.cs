@@ -8,10 +8,10 @@ public class Trap : MonoBehaviour
     
     private void Start()
     {
-        InvokeRepeating(nameof(Show), 0f, 1f);
+        InvokeRepeating(nameof(Show), 0f, 2f);
     }
 
-    public void Show()
+    private void Show()
     {
         state = !state;
         GetComponent<Animator>().SetBool("show", state);
