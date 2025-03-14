@@ -6,10 +6,10 @@ public class Player : MonoBehaviour
 {
     // 체력
     public float hp = 100f;
-    private bool god = false;
 
     // 이동
     public float moveSpeed = 5f;
+    public bool stopMove = false;
     private Rigidbody rb;
 
     // 입력
@@ -29,16 +29,17 @@ public class Player : MonoBehaviour
         playerX = Input.GetAxisRaw("Horizontal");
         playerZ = Input.GetAxisRaw("Vertical");
 
-        if (playerX != 0 || playerZ != 0)
-        {
-            GetComponentInChildren<Animator>().SetBool("isWalk", true);
-        }
-        else
-            GetComponentInChildren<Animator>().SetBool("isWalk", false);
+        GetComponentInChildren<Animator>().SetBool("isWalk", (playerX != 0 || playerZ != 0));
     }
 
     void FixedUpdate()
     {
+        if (stopMove)
+        {
+            playerX = 0;
+            playerZ = 0;
+        }
+
         // 방향
         Vector3 inputDirection = new Vector3(playerX, 0, playerZ).normalized;
 
@@ -53,11 +54,5 @@ public class Player : MonoBehaviour
         Vector3 moveVelocity = inputDirection * moveSpeed;
         moveVelocity.y = rb.velocity.y;
         rb.velocity = moveVelocity;
-    }
-
-    public void Damaged(float damage)
-    {
-        hp -= damage;
-        god = true;
     }
 }
