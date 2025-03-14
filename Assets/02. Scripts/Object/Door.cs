@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
         if (isOpen) return;
         bool open = true;
 
-        foreach(var pedal in pedals)
+        foreach (var pedal in pedals)
         {
             if (!pedal.press)
                 open = false;

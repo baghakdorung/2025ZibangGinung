@@ -5,7 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // 체력
-    public float hp = 100f;
+    public float maxHP;
+    public float hp;
+
+    // 무적
+    private bool god;
 
     // 이동
     public float moveSpeed = 5f;
@@ -18,19 +22,26 @@ public class Player : MonoBehaviour
     // 회전
     private Quaternion targetRotation;
 
+    public GameObject animPivot;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
+
     void Update()
     {
+        hp = Mathf.Min(hp, maxHP);
+
         // 입력
         playerX = Input.GetAxisRaw("Horizontal");
         playerZ = Input.GetAxisRaw("Vertical");
 
-        GetComponentInChildren<Animator>().SetBool("isWalk", (playerX != 0 || playerZ != 0));
+        animPivot.GetComponent<Animator>().SetBool("isWalk", (playerX != 0 || playerZ != 0));
     }
+
 
     void FixedUpdate()
     {
@@ -54,5 +65,25 @@ public class Player : MonoBehaviour
         Vector3 moveVelocity = inputDirection * moveSpeed;
         moveVelocity.y = rb.velocity.y;
         rb.velocity = moveVelocity;
+    }
+
+    public void SetDamage(float damage)
+    {
+        StartCoroutine(Damage(damage));
+    }
+
+    public IEnumerator Damage(float damage)
+    {
+        if (god)
+            yield break;
+
+        god = true;
+        hp -= damage;
+        for (int i = 0; i < 6; i++)
+        {
+            animPivot.SetActive(!animPivot.activeSelf);
+            yield return new WaitForSeconds(0.2f);
+        }
+        god = false;
     }
 }
