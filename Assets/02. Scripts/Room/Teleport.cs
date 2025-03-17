@@ -13,6 +13,9 @@ public class Teleport : MonoBehaviour
     // 페이드
     private GameObject fade;
 
+    // 거리
+    public float targetDistance;
+
     private void Start()
     {
         // 카메라
@@ -58,7 +61,7 @@ public class Teleport : MonoBehaviour
 
         // 4. 플레이어 이동
         Vector3 direction = transform.forward;
-        Vector3 playerTpPosition = player.transform.position + direction * 13;
+        Vector3 playerTpPosition = player.transform.position + direction * targetDistance;
         player.transform.position = playerTpPosition;
 
         // 5. 카메라 이동
