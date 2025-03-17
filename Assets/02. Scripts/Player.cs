@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -24,12 +23,10 @@ public class Player : MonoBehaviour
 
     public GameObject animPivot;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
-
 
     void Update()
     {
@@ -41,7 +38,6 @@ public class Player : MonoBehaviour
 
         animPivot.GetComponent<Animator>().SetBool("isWalk", (playerX != 0 || playerZ != 0));
     }
-
 
     void FixedUpdate()
     {
@@ -61,7 +57,7 @@ public class Player : MonoBehaviour
         }
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
 
-        // 속도
+        // 이동
         Vector3 moveVelocity = inputDirection * moveSpeed;
         moveVelocity.y = rb.velocity.y;
         rb.velocity = moveVelocity;
