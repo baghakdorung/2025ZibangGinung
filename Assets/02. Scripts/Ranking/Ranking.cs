@@ -15,6 +15,7 @@ public class Ranking : Singleton<Ranking>
 
     protected override void Awake()
     {
+        // PlayerPrefs.DeleteAll();
         base.Awake();
     }
 
@@ -24,22 +25,15 @@ public class Ranking : Singleton<Ranking>
         UpdateUI();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Save();
-        }
-    }
-
     public void Register()
     {
         string name = nameInput.text;
-        int time = 1000;
+        int time = 100;
 
         rankData.Add(new RankData(name, time));
 
         inputGroup.interactable = false;
+        Save();
     }
 
     public void Save()
@@ -62,9 +56,9 @@ public class Ranking : Singleton<Ranking>
         for(int i=0; i<5; i++)
         {
             string name = PlayerPrefs.GetString($"RankName{i}", "------");
-            int time = PlayerPrefs.GetInt($"RankTime{i}", 0);
+            int time = PlayerPrefs.GetInt($"RankTime{i}", 5999);
 
-            rankData.Add( new RankData(name, time));
+            rankData.Add(new RankData(name, time));
         }
     }
 
@@ -88,7 +82,7 @@ public class Ranking : Singleton<Ranking>
             int mm = rankData[i].time / 60;
             int ss = rankData[i].time % 60;
 
-            time.text = $"{mm} : {ss}";
+            time.text = $"{mm:D2} : {ss:D2}";
         }
     }
 }
