@@ -1552,6 +1552,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5842555706395816460, guid: 30efafde33888384f8380953c0957dcf, type: 3}
   m_PrefabInstance: {fileID: 7993631569976656664}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &149737461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 149737462}
+  - component: {fileID: 149737463}
+  - component: {fileID: 149737464}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &149737462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149737461}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: -3.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &149737463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149737461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b27aabf218cada49b6a8b4e16aec387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageTime: 0
+  sceneName: 01. MainScene
+--- !u!65 &149737464
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149737461}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &152636508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4041387241439665608, guid: 84e0e915e09138b409814b43b95afd68, type: 3}
@@ -8706,6 +8774,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 377519090}
     m_Modifications:
+    - target: {fileID: 69426626002843102, guid: 30efafde33888384f8380953c0957dcf, type: 3}
+      propertyPath: myNum
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 69426626002843102, guid: 30efafde33888384f8380953c0957dcf, type: 3}
       propertyPath: pedals.Array.data[0]
       value: 
@@ -17005,6 +17077,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1428390493}
     m_Modifications:
     - target: {fileID: 69426626002843102, guid: 30efafde33888384f8380953c0957dcf, type: 3}
+      propertyPath: myNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 69426626002843102, guid: 30efafde33888384f8380953c0957dcf, type: 3}
       propertyPath: pedals.Array.data[0]
       value: 
       objectReference: {fileID: 1390458814}
@@ -20426,6 +20502,10 @@ PrefabInstance:
       value: SecretWall
       objectReference: {fileID: 0}
     - target: {fileID: 6677771375205536998, guid: 329501ba98f724844a05ef34c630f405, type: 3}
+      propertyPath: myNum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677771375205536998, guid: 329501ba98f724844a05ef34c630f405, type: 3}
       propertyPath: pedals.Array.data[0]
       value: 
       objectReference: {fileID: 2121068378}
@@ -20494,6 +20574,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 11808096}
     m_Modifications:
+    - target: {fileID: 69426626002843102, guid: 30efafde33888384f8380953c0957dcf, type: 3}
+      propertyPath: myNum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 69426626002843102, guid: 30efafde33888384f8380953c0957dcf, type: 3}
       propertyPath: pedals.Array.data[0]
       value: 
@@ -20600,6 +20684,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1899161752}
     - target: {fileID: 4065598663121330881, guid: 190c52bd270bc754a82aaf54d1ed43f0, type: 3}
+      propertyPath: myNum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065598663121330881, guid: 190c52bd270bc754a82aaf54d1ed43f0, type: 3}
       propertyPath: pedals.Array.data[0]
       value: 
       objectReference: {fileID: 2121068378}
@@ -20696,6 +20784,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2602356065806014020, guid: 77fbbbee2f5e5c742941d8c581f5f0d7, type: 3}
+      propertyPath: targetDistance
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2951897268342937987, guid: 77fbbbee2f5e5c742941d8c581f5f0d7, type: 3}
+      propertyPath: targetDistance
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 9168494562602727700, guid: 77fbbbee2f5e5c742941d8c581f5f0d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -20881,3 +20977,4 @@ SceneRoots:
   - {fileID: 115338369}
   - {fileID: 1880478797}
   - {fileID: 2028089734}
+  - {fileID: 149737462}
