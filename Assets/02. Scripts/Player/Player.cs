@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
     public float maxHP;
     public float hp;
 
+    // 산소
+    public float maxOxygen;
+    public float oxygen;
+
     // 무적
     private bool god;
 
@@ -31,12 +35,15 @@ public class Player : MonoBehaviour
     void Update()
     {
         hp = Mathf.Min(hp, maxHP);
+        oxygen = Mathf.Min(oxygen, maxOxygen);
 
         // 입력
         playerX = Input.GetAxisRaw("Horizontal");
         playerZ = Input.GetAxisRaw("Vertical");
 
         animPivot.GetComponent<Animator>().SetBool("isWalk", (playerX != 0 || playerZ != 0));
+
+        oxygen -= Time.deltaTime;
     }
 
     void FixedUpdate()

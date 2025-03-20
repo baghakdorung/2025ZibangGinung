@@ -8,15 +8,22 @@ public class PlayerHUD : MonoBehaviour
     public Player player;
 
     public Image hpFill;
+    public Image oxygenFill;
 
     private void Update()
     {
         UpdateHPFill();
+        UpdateOxygenFill();
     }
 
     private void UpdateHPFill()
     {
 
         hpFill.fillAmount = player.hp / player.maxHP;
+    }
+
+    private void UpdateOxygenFill()
+    {
+        oxygenFill.fillAmount = player.oxygen / player.maxOxygen;
     }
 }

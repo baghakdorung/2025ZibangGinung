@@ -10,9 +10,6 @@ public class Teleport : MonoBehaviour
     private GameObject[] objects;
     private Vector3[] objectPositions;
 
-    // 페이드
-    private GameObject fade;
-
     // 거리
     public float targetDistance;
 
@@ -30,10 +27,6 @@ public class Teleport : MonoBehaviour
         {
             objectPositions[i] = objects[i].transform.position;
         }
-
-
-        // fade
-        fade = GameObject.FindGameObjectWithTag("Fade");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,7 +43,7 @@ public class Teleport : MonoBehaviour
         player.GetComponent<Player>().stopMove = true;
 
         // 2. 페이드 아웃
-        fade.GetComponent<Animator>().SetTrigger("FadeOut");
+        Fade.instance.FadeOut();
         yield return new WaitForSeconds(0.25f);
 
         // 3. 방 리셋
@@ -71,7 +64,7 @@ public class Teleport : MonoBehaviour
         mainCamera.transform.position = cameraPosition;
 
         // 6. 페이드 인
-        fade.GetComponent<Animator>().SetTrigger("FadeIn");
+        Fade.instance.FadeIn();
         yield return new WaitForSeconds(0.25f);
 
         // 7. 플레이어 이동 복구
