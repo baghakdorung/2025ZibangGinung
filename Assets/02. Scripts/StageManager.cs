@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StageManager : Singleton<StageManager>
+public class StageManager : MonoBehaviour
 {
     // ¾À
     public string mainScene;
@@ -59,6 +59,7 @@ public class StageManager : Singleton<StageManager>
 
         GameManager.instance.totalTime += stageTime;
         GameManager.instance.openChest = currentOpenChest;
+        Fade.instance.FadeIn();
         SceneManager.LoadScene(mainScene);
     }
 }

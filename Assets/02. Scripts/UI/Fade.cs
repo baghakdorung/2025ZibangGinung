@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Fade : Singleton<Fade>
 {
-    Animator animator;
+    private Animator animator;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {

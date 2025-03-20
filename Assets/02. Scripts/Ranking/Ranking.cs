@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Ranking : Singleton<Ranking>
 {
     public List<RankData> rankData = new();
-
     public List<Transform> rankUIs = new();
 
     public InputField nameInput;
