@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        maxOxygen = 100 + GameManager.instance.shopOxygen * 50;
+        maxOxygen = 300 + GameManager.instance.shopOxygen * 50;
         oxygen = maxOxygen;
     }
 
