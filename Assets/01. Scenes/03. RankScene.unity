@@ -347,7 +347,7 @@ MonoBehaviour:
   rankData:
   - name: 
     time: 0
-  rankUIs:
+  rankUi:
   - {fileID: 27209561}
   - {fileID: 92256571}
   - {fileID: 723276044}
@@ -1993,6 +1993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78baf79267a8e74ea6efd2746c9f34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameScene: 
 --- !u!114 &1066164531
 MonoBehaviour:
   m_ObjectHideFlags: 0
