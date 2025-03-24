@@ -80,7 +80,11 @@
     },
     "com.unity.ide.rider": {
       "version": "3.0.34",
+<<<<<<< Updated upstream
       "depth": 0,
+=======
+      "depth": 1,
+>>>>>>> Stashed changes
       "source": "registry",
       "dependencies": {
         "com.unity.ext.nunit": "1.0.6"
@@ -221,6 +225,7 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+<<<<<<< Updated upstream
     "com.unity.visualscripting": {
       "version": "1.9.6",
       "depth": 0,
@@ -241,6 +246,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> Stashed changes
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

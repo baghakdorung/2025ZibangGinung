@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Ranking : Singleton<Ranking>
 {
     public List<RankData> rankData = new();
-    public List<Transform> rankUIs = new();
+    public List<Transform> rankUi = new();
 
     public InputField nameInput;
     public CanvasGroup inputGroup;
@@ -39,7 +39,7 @@ public class Ranking : Singleton<Ranking>
     {
         Sort();
 
-        for(int i=0; i<rankData.Count; i++)
+        for (int i = 0; i < rankData.Count; i++)
         {
             PlayerPrefs.SetString($"RankName{i}", rankData[i].name);
             PlayerPrefs.SetInt($"RankTime{i}", rankData[i].time);
@@ -52,7 +52,7 @@ public class Ranking : Singleton<Ranking>
     {
         rankData.Clear();
 
-        for(int i=0; i<5; i++)
+        for (int i = 0; i < 5; i++)
         {
             string name = PlayerPrefs.GetString($"RankName{i}", "------");
             int time = PlayerPrefs.GetInt($"RankTime{i}", 5999);
@@ -69,11 +69,11 @@ public class Ranking : Singleton<Ranking>
 
     public void UpdateUI()
     {
-        for(int i=0; i<5; i++)
+        for (int i = 0; i < 5; i++)
         {
-            Text rank = rankUIs[i].GetChild(0).GetComponent<Text>();
-            Text name = rankUIs[i].GetChild(1).GetComponent<Text>();
-            Text time = rankUIs[i].GetChild(2).GetComponent<Text>();
+            Text rank = rankUi[i].GetChild(0).GetComponent<Text>();
+            Text name = rankUi[i].GetChild(1).GetComponent<Text>();
+            Text time = rankUi[i].GetChild(2).GetComponent<Text>();
 
             rank.text = $"{i + 1}";
             name.text = $"{rankData[i].name}";
