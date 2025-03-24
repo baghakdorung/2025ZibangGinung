@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,8 +20,9 @@ public class StageManager : MonoBehaviour
     public float stageTime = 0.0f;
     private int stageLevel = 0;
 
-    // 연 상자
+    // 해금
     public List<int> currentOpenChest = new();
+    public List<int> currentGetItem = new();
 
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class StageManager : MonoBehaviour
 
         // 상자
         currentOpenChest = GameManager.instance.openChest;
+        currentGetItem = GameManager.instance.openItem;
     }
 
     private void Start()
@@ -62,14 +65,18 @@ public class StageManager : MonoBehaviour
 
     public IEnumerator Exit()
     {
+        // 멈추기
         Fade.instance.FadeOut();
-
         player.GetComponent<Player>().stopMove = true;
         yield return new WaitForSeconds(0.5f);
 
+        // 데이터 저장
         GameManager.instance.totalTime += stageTime;
         GameManager.instance.openChest = currentOpenChest;
+        GameManager.instance.openItem = currentGetItem;
+        GameManager.instance.money += player.GetComponent<Player>().weight.Sum();
 
+        // 로드
         Cursor.visible = true;
         Fade.instance.FadeIn();
         SceneManager.LoadScene(mainScene);

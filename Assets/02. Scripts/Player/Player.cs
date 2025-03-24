@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
 
     // 이동
     public float moveSpeed = 5f;
+    public float weightSlow = 1f;
     public bool stopMove = false;
     private Rigidbody rb;
 
@@ -25,11 +28,18 @@ public class Player : MonoBehaviour
     // 회전
     private Quaternion targetRotation;
 
+    // 애니메이션
     public GameObject animPivot;
+
+    // 가방
+    public List<string> inventory = new(8);
+    public List<int> weight = new(8);
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        maxOxygen = 100 + GameManager.instance.shopOxygen * 50;
+        oxygen = maxOxygen;
     }
 
     void Update()
@@ -37,11 +47,17 @@ public class Player : MonoBehaviour
         hp = Mathf.Min(hp, maxHP);
         oxygen = Mathf.Min(oxygen, maxOxygen);
 
+        weightSlow = 1;
+        if (weight.Sum() > 100)
+        {
+            weightSlow -= Mathf.Min(0.5f, (weight.Sum() - 100) * 0.01f);
+        }
+
         // 입력
         playerX = Input.GetAxisRaw("Horizontal");
         playerZ = Input.GetAxisRaw("Vertical");
 
-        animPivot.GetComponent<Animator>().SetBool("isWalk", (playerX != 0 || playerZ != 0));
+        animPivot.GetComponent<Animator>().SetBool("isWalk", playerX != 0 || playerZ != 0);
 
         oxygen -= Time.deltaTime;
     }
@@ -65,7 +81,7 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
 
         // 이동
-        Vector3 moveVelocity = inputDirection * moveSpeed;
+        Vector3 moveVelocity = inputDirection * moveSpeed * weightSlow;
         moveVelocity.y = rb.velocity.y;
         rb.velocity = moveVelocity;
     }
