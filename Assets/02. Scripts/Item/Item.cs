@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
         if (GameManager.instance.openItem.Contains(myNum))
         {
             stageManager.currentGetItem.Add(myNum);
-            Destroy(transform.parent.gameObject);
+            Destroy(transform.gameObject);
         }
     }
 
@@ -28,7 +28,7 @@ public class Item : MonoBehaviour
             stageManager.currentGetItem.Add(myNum);
             player.inventory.Add(myName);
             player.weight.Add(myWeight);
-            Destroy(transform.parent.gameObject);
+            Destroy(transform.gameObject);
         }
     }
 }
