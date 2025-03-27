@@ -21,11 +21,19 @@ public class PlayerHUD : MonoBehaviour
     public string[] itemName;
     public Sprite[] itemImage;
 
+    private float shopBackpack;
+
+    private void Start()
+    {
+        shopBackpack = 100 + GameManager.instance.shopBackpack * 150;
+    }
+
     private void Update()
     {
         UpdateHPFill();
         UpdateOxygenFill();
         UpdateInventory();
+        Cheat();
     }
 
     private void UpdateHPFill()
@@ -41,8 +49,17 @@ public class PlayerHUD : MonoBehaviour
 
     private void UpdateInventory()
     {
-        backpackFill.fillAmount = player.weight.Sum() / 100.0f;
-        backpackOverFill.fillAmount = player.weight.Sum() / 100.0f - 1;
-        weight.text = $"{player.weight.Sum()} / 100";
+        backpackFill.fillAmount = player.weight.Sum() / shopBackpack;
+        backpackOverFill.fillAmount = player.weight.Sum() / shopBackpack - 1;
+        weight.text = $"{player.weight.Sum()} / {(int)shopBackpack}";
+    }
+
+    private void Cheat()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            player.hp = player.maxHP;
+            player.oxygen = player.maxOxygen;
+        }
     }
 }

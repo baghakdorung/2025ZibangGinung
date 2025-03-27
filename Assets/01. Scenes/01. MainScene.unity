@@ -506,6 +506,7 @@ GameObject:
   - component: {fileID: 92322393}
   - component: {fileID: 92322392}
   - component: {fileID: 92322391}
+  - component: {fileID: 92322394}
   m_Layer: 5
   m_Name: StageButton (1)
   m_TagString: Untagged
@@ -626,6 +627,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92322389}
   m_CullTransparentMesh: 1
+--- !u!114 &92322394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92322389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bc98cd33d19b4459c437f3f87d9253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myNum: 2
 --- !u!1 &92970901
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,6 +3722,7 @@ GameObject:
   - component: {fileID: 771478300}
   - component: {fileID: 771478299}
   - component: {fileID: 771478298}
+  - component: {fileID: 771478301}
   m_Layer: 5
   m_Name: StageButton (2)
   m_TagString: Untagged
@@ -3828,6 +3843,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771478296}
   m_CullTransparentMesh: 1
+--- !u!114 &771478301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771478296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bc98cd33d19b4459c437f3f87d9253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myNum: 3
 --- !u!1001 &786889463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9893,6 +9921,7 @@ GameObject:
   - component: {fileID: 1852910179}
   - component: {fileID: 1852910178}
   - component: {fileID: 1852910177}
+  - component: {fileID: 1852910180}
   m_Layer: 5
   m_Name: StageButton (4)
   m_TagString: Untagged
@@ -10013,6 +10042,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852910175}
   m_CullTransparentMesh: 1
+--- !u!114 &1852910180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852910175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bc98cd33d19b4459c437f3f87d9253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myNum: 5
 --- !u!1 &1889892532
 GameObject:
   m_ObjectHideFlags: 0
@@ -10025,6 +10067,7 @@ GameObject:
   - component: {fileID: 1889892536}
   - component: {fileID: 1889892535}
   - component: {fileID: 1889892534}
+  - component: {fileID: 1889892537}
   m_Layer: 5
   m_Name: StageButton
   m_TagString: Untagged
@@ -10145,6 +10188,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889892532}
   m_CullTransparentMesh: 1
+--- !u!114 &1889892537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889892532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bc98cd33d19b4459c437f3f87d9253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myNum: 1
 --- !u!1 &1891252330
 GameObject:
   m_ObjectHideFlags: 0
@@ -10157,6 +10213,7 @@ GameObject:
   - component: {fileID: 1891252334}
   - component: {fileID: 1891252333}
   - component: {fileID: 1891252332}
+  - component: {fileID: 1891252335}
   m_Layer: 5
   m_Name: StageButton (3)
   m_TagString: Untagged
@@ -10277,6 +10334,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891252330}
   m_CullTransparentMesh: 1
+--- !u!114 &1891252335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891252330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bc98cd33d19b4459c437f3f87d9253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myNum: 4
 --- !u!1001 &1894916205
 PrefabInstance:
   m_ObjectHideFlags: 0

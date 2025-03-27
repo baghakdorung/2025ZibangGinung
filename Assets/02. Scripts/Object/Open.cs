@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.ProBuilder.Shapes;
 
 public class Open : MonoBehaviour
 {
+    public bool isKey;
+
     public StageManager stageManager;
 
     public int myNum;
@@ -15,6 +16,7 @@ public class Open : MonoBehaviour
 
     private void Start()
     {
+
         if (GameManager.instance.openChest.Contains(myNum))
         {
             isOpen = true;
@@ -36,6 +38,9 @@ public class Open : MonoBehaviour
 
         if (open)
         {
+            if (isKey)
+                GameManager.instance.canLevel += 1;
+
             isOpen = true;
             stageManager.currentOpenChest.Add(myNum);
             GetComponent<Animator>().SetTrigger("Open");

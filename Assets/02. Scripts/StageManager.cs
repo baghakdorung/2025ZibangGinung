@@ -33,8 +33,8 @@ public class StageManager : MonoBehaviour
         stageLevel = GameManager.instance.currentLevel;
 
         // 상자
-        currentOpenChest = GameManager.instance.openChest;
-        currentGetItem = GameManager.instance.openItem;
+        currentOpenChest = GameManager.instance.openChest.ToList();
+        currentGetItem = GameManager.instance.openItem.ToList();
     }
 
     private void Start()
@@ -56,6 +56,17 @@ public class StageManager : MonoBehaviour
     private void Update()
     {
         stageTime += Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            GameManager.instance.currentLevel++;
+            if (GameManager.instance.currentLevel > 5)
+                GameManager.instance.currentLevel = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -72,8 +83,8 @@ public class StageManager : MonoBehaviour
 
         // 데이터 저장
         GameManager.instance.totalTime += stageTime;
-        GameManager.instance.openChest = currentOpenChest;
-        GameManager.instance.openItem = currentGetItem;
+        GameManager.instance.openChest = currentOpenChest.ToList();
+        GameManager.instance.openItem = currentGetItem.ToList();
         GameManager.instance.money += player.GetComponent<Player>().weight.Sum();
 
         // 로드
