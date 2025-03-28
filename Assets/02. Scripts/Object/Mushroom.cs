@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Mushroom : MonoBehaviour
 {
-    public float detectionRange = 20f;
+    public float maxHP = 3;
+    public float currentHP = 3;
+
+    private float detectionRange = 20f;
     private Transform player;
 
-    void Start()
+    public Animator model;
+
+    private void Start()
     {
         FindPlayer();
     }
 
-    void Update()
+    private void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= detectionRange)
@@ -21,7 +26,7 @@ public class Mushroom : MonoBehaviour
         }
     }
 
-    void FindPlayer()
+    private void FindPlayer()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -30,10 +35,29 @@ public class Mushroom : MonoBehaviour
         }
     }
 
-    void MoveTowardsPlayer()
+    private void MoveTowardsPlayer()
     {
         Vector3 direction = (player.position - transform.position).normalized;
-        transform.position += direction * 0.4f * Time.deltaTime;
+        transform.position += 0.4f * Time.deltaTime * direction;
         transform.LookAt(player);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.GetComponent<Player>().SetDamage(8);
+        }
+    }
+
+    public void GetDamage(float damage)
+    {
+        currentHP -= damage;
+        model.SetTrigger("GetDamage");
+
+        if (currentHP <= 0)
+        {
+            GetComponent<Animator>().SetTrigger("Death");
+        }
     }
 }

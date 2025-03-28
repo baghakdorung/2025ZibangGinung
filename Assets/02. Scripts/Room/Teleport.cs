@@ -8,7 +8,9 @@ public class Teleport : MonoBehaviour
 
     // 방 리셋
     private GameObject[] objects;
+    private GameObject[] enemies;
     private Vector3[] objectPositions;
+    private Vector3[] enemyPositions;
 
     // 거리
     public float targetDistance;
@@ -21,11 +23,18 @@ public class Teleport : MonoBehaviour
 
         // 오브젝트 좌표 저장
         objects = GameObject.FindGameObjectsWithTag("Object");
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         objectPositions = new Vector3[objects.Length];
+        enemyPositions = new Vector3[enemies.Length];
 
         for (int i = 0; i < objects.Length; i++)
         {
             objectPositions[i] = objects[i].transform.position;
+        }
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemyPositions[i] = enemies[i].transform.position;
         }
     }
 
@@ -50,6 +59,10 @@ public class Teleport : MonoBehaviour
         for (int i = 0; i < objects.Length; i++)
         {
            objects[i].transform.position = objectPositions[i];
+        }
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].transform.position = enemyPositions[i];
         }
 
         // 4. 플레이어 이동

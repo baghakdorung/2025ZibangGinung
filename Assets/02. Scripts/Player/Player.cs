@@ -35,6 +35,11 @@ public class Player : MonoBehaviour
     public List<string> inventory = new(8);
     public List<int> weight = new(8);
 
+    // 공격
+    private bool isAttack = false;
+    public float damage = 1;
+    public Transform attackRange;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -44,9 +49,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // 스탯
         hp = Mathf.Min(hp, maxHP);
         oxygen = Mathf.Min(oxygen, maxOxygen);
 
+        // 무게
         weightSlow = 1;
         if (weight.Sum() > 100)
         {
@@ -59,7 +66,14 @@ public class Player : MonoBehaviour
 
         animPivot.GetComponent<Animator>().SetBool("isWalk", playerX != 0 || playerZ != 0);
 
+        // 산소
         oxygen -= Time.deltaTime;
+
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            StartCoroutine(Attack() );
+        }
     }
 
     void FixedUpdate()
@@ -104,5 +118,31 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         god = false;
+    }
+
+    public IEnumerator Attack()
+    {
+        if (!isAttack)
+        {
+            isAttack = true;
+
+            animPivot.GetComponent<Animator>().SetTrigger("attack");
+            yield return new WaitForSeconds(0.25f);
+
+            Vector3 pos = attackRange.position; //감지할 부분의 중앙값
+            Vector3 scale = attackRange.lossyScale / 2f; //크기 (절반크기 사용해야함)
+
+            Collider[] objs = Physics.OverlapBox(pos, scale, attackRange.rotation);
+
+            foreach(Collider obj in objs)
+            {
+                if (obj.TryGetComponent(out Mushroom enemy))
+                {
+                    enemy.GetDamage(damage);
+                }
+            }
+
+            isAttack = false;
+        }
     }
 }
