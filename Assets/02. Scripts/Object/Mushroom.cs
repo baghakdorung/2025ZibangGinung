@@ -11,6 +11,7 @@ public class Mushroom : MonoBehaviour
     private Transform player;
 
     public Animator model;
+    private bool death = false;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class Mushroom : MonoBehaviour
     private void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer <= detectionRange)
+        if (distanceToPlayer <= detectionRange && !death)
         {
             MoveTowardsPlayer();
         }
@@ -44,7 +45,7 @@ public class Mushroom : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !death)
         {
             collision.transform.GetComponent<Player>().SetDamage(8);
         }
@@ -52,12 +53,21 @@ public class Mushroom : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        currentHP -= damage;
-        model.SetTrigger("GetDamage");
-
-        if (currentHP <= 0)
+        if (!death)
         {
-            GetComponent<Animator>().SetTrigger("Death");
+            currentHP -= damage;
+            model.SetTrigger("GetDamage");
+
+            if (currentHP <= 0)
+            {
+                death = true;
+                GetComponent<Animator>().SetTrigger("Death");
+            }
         }
     }
+
+    public void DestroyMushroom()
+    {
+        Destroy(gameObject);
+    } 
 }

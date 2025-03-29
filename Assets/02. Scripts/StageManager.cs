@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StageManager : MonoBehaviour
+public class StageManager : Singleton<StageManager>
 {
     // ¾À
     public string mainScene;
@@ -24,8 +24,10 @@ public class StageManager : MonoBehaviour
     public List<int> currentOpenChest = new();
     public List<int> currentGetItem = new();
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // Ä¿¼­
         Cursor.visible = false;
 

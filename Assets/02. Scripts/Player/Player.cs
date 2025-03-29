@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 
     // 애니메이션
     public GameObject animPivot;
+    public GameObject body;
 
     // 가방
     public List<string> inventory = new(8);
@@ -114,7 +115,7 @@ public class Player : MonoBehaviour
         hp -= damage;
         for (int i = 0; i < 6; i++)
         {
-            animPivot.SetActive(!animPivot.activeSelf);
+            body.SetActive(!body.activeSelf);
             yield return new WaitForSeconds(0.2f);
         }
         god = false;

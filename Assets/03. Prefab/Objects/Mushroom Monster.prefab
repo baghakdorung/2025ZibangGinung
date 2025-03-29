@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3661632505153597353}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MushroomRigNeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6038935975841595375}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MushroomRigJawDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 179619649178631553}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MushroomRigFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4539740768385891828}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MushroomRigThigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6472006825818052471}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MushroomRigJawUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,9 +170,9 @@ GameObject:
   - component: {fileID: 1282008909759279234}
   - component: {fileID: 974433052064641813}
   - component: {fileID: 6638135715468429235}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mushroom Monster
-  m_TagString: Object
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +278,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 3
   currentHP: 3
-  animPivot: {fileID: 7990040101471018755}
   model: {fileID: 5278745207636688218}
 --- !u!1 &7595235665700347506
 GameObject:
@@ -289,7 +288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6391255257923332812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MushroomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +321,7 @@ GameObject:
   - component: {fileID: 8516180843474414849}
   - component: {fileID: 5207609021069350683}
   - component: {fileID: 5278745207636688218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MushroomMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6114849318368863007}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MushroomRigRibcage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4242076942746743067}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MushroomRigHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}

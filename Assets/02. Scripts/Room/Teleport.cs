@@ -58,11 +58,13 @@ public class Teleport : MonoBehaviour
         // 3. 방 리셋
         for (int i = 0; i < objects.Length; i++)
         {
-           objects[i].transform.position = objectPositions[i];
+            if (objects[i] != null)
+                objects[i].transform.position = objectPositions[i];
         }
         for (int i = 0; i < enemies.Length; i++)
         {
-            enemies[i].transform.position = enemyPositions[i];
+            if (enemies[i] != null)
+                enemies[i].transform.position = enemyPositions[i];
         }
 
         // 4. 플레이어 이동
