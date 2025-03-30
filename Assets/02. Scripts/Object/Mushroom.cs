@@ -7,40 +7,32 @@ public class Mushroom : MonoBehaviour
     public float maxHP = 3;
     public float currentHP = 3;
 
-    private float detectionRange = 20f;
-    private Transform player;
+    private GameObject player;
 
     public Animator model;
     private bool death = false;
 
-    private void Start()
+    private void Awake()
     {
-        FindPlayer();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer <= detectionRange && !death)
+        if (!death)
         {
-            MoveTowardsPlayer();
-        }
-    }
-
-    private void FindPlayer()
-    {
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
-        {
-            player = playerObj.transform;
+            if (!player.GetComponent<Player>().invisible)
+                MoveTowardsPlayer();
+            else
+                GetComponent<Animator>().SetTrigger("Idle");
         }
     }
 
     private void MoveTowardsPlayer()
     {
-        Vector3 direction = (player.position - transform.position).normalized;
+        Vector3 direction = (player.transform.position - transform.position).normalized;
         transform.position += 0.4f * Time.deltaTime * direction;
-        transform.LookAt(player);
+        transform.LookAt(player.transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -69,5 +61,5 @@ public class Mushroom : MonoBehaviour
     public void DestroyMushroom()
     {
         Destroy(gameObject);
-    } 
+    }
 }

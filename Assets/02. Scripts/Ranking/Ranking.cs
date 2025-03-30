@@ -12,6 +12,9 @@ public class Ranking : Singleton<Ranking>
     public InputField nameInput;
     public CanvasGroup inputGroup;
 
+    public Text timeText;
+    public int time;
+
     protected override void Awake()
     {
         // PlayerPrefs.DeleteAll();
@@ -20,6 +23,11 @@ public class Ranking : Singleton<Ranking>
 
     private void Start()
     {
+        if (GameManager.instance.canLevel > 5 && !GameManager.instance.clear)
+            inputGroup.interactable = true;
+        time = (int)GameManager.instance.totalTime;
+        timeText.text = $"{time / 60:D2} : {time % 60:D2}";
+
         Load();
         UpdateUI();
     }
@@ -27,7 +35,6 @@ public class Ranking : Singleton<Ranking>
     public void Register()
     {
         string name = nameInput.text;
-        int time = 100;
 
         rankData.Add(new RankData(name, time));
 
@@ -92,9 +99,9 @@ public class RankData
     public string name;
     public int time;
 
-    public RankData(string name, int item)
+    public RankData(string name, int time)
     {
         this.name = name;
-        this.time = item;
+        this.time = time;
     }
 }

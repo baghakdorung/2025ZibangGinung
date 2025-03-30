@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class Player : MonoBehaviour
 
     // 무적
     private bool god;
+    public bool invisible;
+    private bool death;
 
     // 이동
     public float moveSpeed = 5f;
@@ -41,6 +45,8 @@ public class Player : MonoBehaviour
     public float damage = 1;
     public Transform attackRange;
 
+    public string mainScene;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -50,9 +56,19 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // 산소
+        oxygen -= Time.deltaTime;
+
         // 스탯
         hp = Mathf.Min(hp, maxHP);
         oxygen = Mathf.Min(oxygen, maxOxygen);
+
+        // 죽음
+        if ((hp <= 0 || oxygen <= 0) && !death)
+        {
+            death = true;
+            StartCoroutine(Death());
+        }
 
         // 무게
         weightSlow = 1;
@@ -67,13 +83,10 @@ public class Player : MonoBehaviour
 
         animPivot.GetComponent<Animator>().SetBool("isWalk", playerX != 0 || playerZ != 0);
 
-        // 산소
-        oxygen -= Time.deltaTime;
-
 
         if (Input.GetKey(KeyCode.Space))
         {
-            StartCoroutine(Attack() );
+            StartCoroutine(Attack());
         }
     }
 
@@ -123,7 +136,7 @@ public class Player : MonoBehaviour
 
     public IEnumerator Attack()
     {
-        if (!isAttack)
+        if (!isAttack && !stopMove)
         {
             isAttack = true;
 
@@ -135,7 +148,7 @@ public class Player : MonoBehaviour
 
             Collider[] objs = Physics.OverlapBox(pos, scale, attackRange.rotation);
 
-            foreach(Collider obj in objs)
+            foreach (Collider obj in objs)
             {
                 if (obj.TryGetComponent(out Mushroom enemy))
                 {
@@ -145,5 +158,19 @@ public class Player : MonoBehaviour
 
             isAttack = false;
         }
+    }
+
+    public IEnumerator Death()
+    {
+        stopMove = true;
+        animPivot.GetComponent<Animator>().SetTrigger("die");
+        yield return new WaitForSeconds(2.0f);
+        Fade.instance.FadeOut();
+        yield return new WaitForSeconds(1.0f);
+
+        // 로드
+        Cursor.visible = true;
+        Fade.instance.FadeIn();
+        SceneManager.LoadScene(mainScene);
     }
 }

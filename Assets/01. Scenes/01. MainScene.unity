@@ -8952,14 +8952,14 @@ RectTransform:
   m_GameObject: {fileID: 1701022838}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 473817543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -811.5, y: 340}
+  m_AnchoredPosition: {x: -810, y: 356}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1701022840
@@ -8984,7 +8984,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c336e216c53828b41a96c9f7eeafec64, type: 3}
-    m_FontSize: 256
+    m_FontSize: 160
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -8994,8 +8994,10 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: LongTitle
+    m_LineSpacing: 0.8
+  m_Text: 'Pyramid
+
+    Adventure'
 --- !u!222 &1701022841
 CanvasRenderer:
   m_ObjectHideFlags: 0

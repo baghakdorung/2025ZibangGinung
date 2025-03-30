@@ -11,6 +11,8 @@ public class Slot : MonoBehaviour
     public List<string> itemName;
     public List<Sprite> itemImage;
 
+    public string myItemName;
+
     private void Update()
     {
         if (player.inventory.Count > myNum && player.inventory[myNum] != null)

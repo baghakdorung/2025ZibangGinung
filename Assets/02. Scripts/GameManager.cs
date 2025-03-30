@@ -20,6 +20,8 @@ public class GameManager : Singleton<GameManager>
 
     private bool isPaused = false;
 
+    public bool clear = false;
+
     protected override void Awake()
     {
         base.Awake();

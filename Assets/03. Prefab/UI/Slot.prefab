@@ -168,5 +168,17 @@ MonoBehaviour:
   myNum: 1
   itemName:
   - Diamond
+  - Hp
+  - Oxygen
+  - Compass
+  - Speed
+  - Speeed
+  - Invisible
   itemImage:
   - {fileID: 21300000, guid: d6d028b6e96dd9349b31df12d12525f8, type: 3}
+  - {fileID: 21300000, guid: 8a7a396156177504b93a1e3806637f75, type: 3}
+  - {fileID: 21300000, guid: 4bcd7df7a2a6ae141b78c84e9c6b1847, type: 3}
+  - {fileID: 21300000, guid: b35bebc7c104ce342916d8f36d179ac5, type: 3}
+  - {fileID: 21300000, guid: 81bdfa1f8dba61a4881e72f1e230bd54, type: 3}
+  - {fileID: 21300000, guid: 33b7f0e6f5e341546993ce71f8faae23, type: 3}
+  - {fileID: 21300000, guid: 09c92aced76c7e54c9bdc2c0b7c31b48, type: 3}
