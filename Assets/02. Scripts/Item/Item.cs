@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.WebSockets;
 using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public Player player;
+    private Player player;
 
     public int myNum;
     public string myName;
     public int myWeight;
+
+    private void Awake()
+    {
+        player = FindObjectOfType<Player>();
+    }
 
     private void Start()
     {
