@@ -23,7 +23,7 @@ public class Ranking : Singleton<Ranking>
 
     private void Start()
     {
-        if (GameManager.instance.canLevel > 5 && !GameManager.instance.clear)
+        if (GameManager.instance.canLevel >= 5 && !GameManager.instance.clear)
             inputGroup.interactable = true;
         time = (int)GameManager.instance.totalTime;
         timeText.text = $"{time / 60:D2} : {time % 60:D2}";
@@ -39,6 +39,7 @@ public class Ranking : Singleton<Ranking>
         rankData.Add(new RankData(name, time));
 
         inputGroup.interactable = false;
+        GameManager.instance.clear = true;
         Save();
     }
 

@@ -99,7 +99,7 @@ public class SelectedItem : MonoBehaviour
             else if (item == "Speeed")
                 player.moveSpeed += 1.0f;
             else if (item == "Invisible")
-                player.invisible = true;
+                player.invisibleTime = 30.0f;
 
             player.inventory.RemoveAt(SelectingItem);
         }

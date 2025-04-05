@@ -21,7 +21,7 @@ public class PlayerHUD : MonoBehaviour
     public string[] itemName;
     public Sprite[] itemImage;
 
-    private float shopBackpack;
+    public float shopBackpack;
 
     private void Start()
     {
@@ -38,7 +38,6 @@ public class PlayerHUD : MonoBehaviour
 
     private void UpdateHPFill()
     {
-
         hpFill.fillAmount = player.hp / player.maxHP;
     }
 

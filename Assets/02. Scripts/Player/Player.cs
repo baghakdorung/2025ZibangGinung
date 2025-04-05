@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
 
     // 무적
     private bool god;
+    public float invisibleTime;
     public bool invisible;
     private bool death;
 
@@ -47,6 +49,9 @@ public class Player : MonoBehaviour
 
     public string mainScene;
 
+    public PlayerHUD playerHUD;
+    public GameObject invisibility;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -72,9 +77,9 @@ public class Player : MonoBehaviour
 
         // 무게
         weightSlow = 1;
-        if (weight.Sum() > 100)
+        if (weight.Sum() > playerHUD.shopBackpack)
         {
-            weightSlow -= Mathf.Min(0.5f, (weight.Sum() - 100) * 0.01f);
+            weightSlow -= Mathf.Min(0.5f, (weight.Sum() - playerHUD.shopBackpack) * 0.01f);
         }
 
         // 입력
@@ -88,6 +93,13 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(Attack());
         }
+
+        invisible = invisibleTime > 0.0f;
+        if (invisibleTime > 3.0f)
+            invisibility.SetActive(true);
+        else
+            invisibility.SetActive(false);
+        invisibleTime -= Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -141,7 +153,7 @@ public class Player : MonoBehaviour
             isAttack = true;
 
             animPivot.GetComponent<Animator>().SetTrigger("attack");
-            yield return new WaitForSeconds(0.25f);
+            GetComponent<AudioSource>().Play();
 
             Vector3 pos = attackRange.position; //감지할 부분의 중앙값
             Vector3 scale = attackRange.lossyScale / 2f; //크기 (절반크기 사용해야함)
@@ -155,7 +167,7 @@ public class Player : MonoBehaviour
                     enemy.GetDamage(damage);
                 }
             }
-
+            yield return new WaitForSeconds(0.25f);
             isAttack = false;
         }
     }

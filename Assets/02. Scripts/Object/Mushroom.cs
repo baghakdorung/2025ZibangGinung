@@ -21,10 +21,13 @@ public class Mushroom : MonoBehaviour
     {
         if (!death)
         {
-            if (!player.GetComponent<Player>().invisible)
+            if (!player.GetComponent<Player>().invisible || Vector3.Distance(player.transform.position, transform.position) * transform.localScale.y <= 2)
+            {
+                GetComponent<Animator>().SetBool("Idle", false);
                 MoveTowardsPlayer();
+            }
             else
-                GetComponent<Animator>().SetTrigger("Idle");
+                GetComponent<Animator>().SetBool("Idle", true);
         }
     }
 
